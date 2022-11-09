@@ -6,7 +6,7 @@
 #define RFM69_RST     4
 #define LED           13
 
-char message[] = "this is ve3irr/w3   -   the flag is shuffleboard";
+char message[] = "this is ve3irr/w3   -   the flag is proclamation";
 unsigned long dit_len = 100; /* 12 WPM */
 
 RFM69OOK radio(RFM69_CS, RFM69_INT, true, 0);
