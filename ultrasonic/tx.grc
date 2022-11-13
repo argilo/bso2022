@@ -85,6 +85,18 @@ blocks:
     coordinate: [440, 460.0]
     rotation: 0
     state: true
+- name: message
+  id: variable
+  parameters:
+    comment: ''
+    value: '"Hello world! flag{foobar} "'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [512, 12.0]
+    rotation: 0
+    state: true
 - name: right_on
   id: variable_qtgui_check_box
   parameters:
@@ -230,13 +242,13 @@ blocks:
     repeat: 'True'
     tags: '[]'
     type: byte
-    vector: '[ord(c) for c in "Hello world! flag{foobar} "]'
+    vector: '[ord(c) for c in message]'
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [40, 140.0]
+    coordinate: [32, 140.0]
     rotation: 0
     state: true
 - name: digital_gfsk_mod_0
@@ -307,4 +319,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: v3.11.0.0git-273-g3f9c56ab
+  grc_version: 3.10.4.0
