@@ -94,7 +94,7 @@ blocks:
     label: Enable right speaker
     'true': '1'
     type: int
-    value: '1'
+    value: '0'
   states:
     bus_sink: false
     bus_source: false
