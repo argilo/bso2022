@@ -85,18 +85,6 @@ blocks:
     coordinate: [440, 460.0]
     rotation: 0
     state: true
-- name: message
-  id: variable
-  parameters:
-    comment: ''
-    value: '"Hello world! flag{foobar} "'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [512, 12.0]
-    rotation: 0
-    state: true
 - name: right_on
   id: variable_qtgui_check_box
   parameters:
@@ -126,6 +114,30 @@ blocks:
     coordinate: [336, 12.0]
     rotation: 0
     state: enabled
+- name: secret_message
+  id: variable
+  parameters:
+    comment: ''
+    value: '"Hello world! flag{foo bar baz}"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 12.0]
+    rotation: 0
+    state: true
+- name: sync_word
+  id: variable
+  parameters:
+    comment: ''
+    value: '[0xd3, 0x91]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [512, 12.0]
+    rotation: 0
+    state: true
 - name: audio_sink_0
   id: audio_sink
   parameters:
@@ -242,13 +254,13 @@ blocks:
     repeat: 'True'
     tags: '[]'
     type: byte
-    vector: '[ord(c) for c in message]'
+    vector: ([0b01010101] * 4) + sync_word + [ord(c) for c in secret_message]
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 140.0]
+    coordinate: [24, 140.0]
     rotation: 0
     state: true
 - name: digital_gfsk_mod_0
