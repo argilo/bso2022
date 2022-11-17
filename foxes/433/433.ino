@@ -90,5 +90,5 @@ void loop() {
     }
     end();
   }
-  LowPower.sleep(60000);
+  LowPower.sleep(10000);
 }
