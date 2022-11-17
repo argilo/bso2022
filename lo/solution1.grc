@@ -71,7 +71,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 156.0]
+    coordinate: [776, 156.0]
     rotation: 0
     state: true
 - name: analog_quadrature_demod_cf_0
@@ -87,7 +87,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [416, 164.0]
+    coordinate: [208, 164.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -104,41 +104,29 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1168, 164.0]
+    coordinate: [960, 164.0]
     rotation: 0
     state: true
-- name: blocks_float_to_complex_0
-  id: blocks_float_to_complex
+- name: blocks_file_source_0
+  id: blocks_file_source
   parameters:
     affinity: ''
     alias: ''
+    begin_tag: pmt.PMT_NIL
     comment: ''
+    file: lo1.c32
+    length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [224, 152.0]
-    rotation: 0
-    state: true
-- name: blocks_wavfile_source_0
-  id: blocks_wavfile_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    file: lo1.wav
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    nchan: '2'
-    repeat: 'False'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [32, 152.0]
+    coordinate: [32, 132.0]
     rotation: 0
     state: true
 - name: dc_blocker_xx_0
@@ -156,7 +144,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 156.0]
+    coordinate: [408, 156.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -176,16 +164,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [784, 140.0]
+    coordinate: [576, 140.0]
     rotation: 0
     state: true
 
 connections:
 - [analog_fm_deemph_0, '0', audio_sink_0, '0']
 - [analog_quadrature_demod_cf_0, '0', dc_blocker_xx_0, '0']
-- [blocks_float_to_complex_0, '0', analog_quadrature_demod_cf_0, '0']
-- [blocks_wavfile_source_0, '0', blocks_float_to_complex_0, '0']
-- [blocks_wavfile_source_0, '1', blocks_float_to_complex_0, '1']
+- [blocks_file_source_0, '0', analog_quadrature_demod_cf_0, '0']
 - [dc_blocker_xx_0, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', analog_fm_deemph_0, '0']
 

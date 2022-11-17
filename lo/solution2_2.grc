@@ -125,20 +125,26 @@ blocks:
     coordinate: [24, 452.0]
     rotation: 180
     state: enabled
-- name: blocks_float_to_complex_0
-  id: blocks_float_to_complex
+- name: blocks_file_source_0
+  id: blocks_file_source
   parameters:
     affinity: ''
     alias: ''
+    begin_tag: pmt.PMT_NIL
     comment: ''
+    file: lo2.c32
+    length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [256, 152.0]
+    coordinate: [280, 132.0]
     rotation: 0
     state: true
 - name: blocks_multiply_conjugate_cc_0
@@ -155,24 +161,6 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [880, 168.0]
-    rotation: 0
-    state: true
-- name: blocks_wavfile_source_0
-  id: blocks_wavfile_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    file: lo2.wav
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    nchan: '2'
-    repeat: 'False'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [64, 152.0]
     rotation: 0
     state: true
 - name: dc_blocker_xx_0
@@ -242,11 +230,9 @@ connections:
 - [analog_fm_deemph_0, '0', audio_sink_0, '0']
 - [analog_pll_refout_cc_0, '0', blocks_multiply_conjugate_cc_0, '1']
 - [analog_quadrature_demod_cf_0, '0', dc_blocker_xx_0, '0']
-- [blocks_float_to_complex_0, '0', analog_pll_refout_cc_0, '0']
-- [blocks_float_to_complex_0, '0', blocks_multiply_conjugate_cc_0, '0']
+- [blocks_file_source_0, '0', analog_pll_refout_cc_0, '0']
+- [blocks_file_source_0, '0', blocks_multiply_conjugate_cc_0, '0']
 - [blocks_multiply_conjugate_cc_0, '0', high_pass_filter_0, '0']
-- [blocks_wavfile_source_0, '0', blocks_float_to_complex_0, '0']
-- [blocks_wavfile_source_0, '1', blocks_float_to_complex_0, '1']
 - [dc_blocker_xx_0, '0', rational_resampler_xxx_0, '0']
 - [high_pass_filter_0, '0', analog_quadrature_demod_cf_0, '0']
 - [rational_resampler_xxx_0, '0', analog_fm_deemph_0, '0']
