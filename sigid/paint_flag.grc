@@ -255,13 +255,13 @@ blocks:
     repeat: 'True'
     tags: '[]'
     type: complex
-    vector: '[math.sin(math.pi * n / fft_size) ** 2 for n in range(fft_size)]'
+    vector: window.hann(fft_size)
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 468.0]
+    coordinate: [184, 460.0]
     rotation: 0
     state: true
 - name: blocks_vector_to_stream_0
