@@ -164,7 +164,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '0.03'
+    const: 10 / fft_size
     maxoutbuf: '0'
     minoutbuf: '0'
     type: complex
