@@ -32,4 +32,4 @@ class BitWriter(BufferedIOBase):
 out = BitWriter()
 writer = handlers.HexBytesWriter(out)
 encode_str(input_str, codecs.ITA2_STANDARD, writer)
-print(len(out.getvalue()))
+print(out.getvalue())
