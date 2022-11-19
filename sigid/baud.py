@@ -3,7 +3,7 @@
 from io import BufferedIOBase
 from baudot import encode_str, codecs, handlers
 
-input_str = 'THIS IS VE3IRR. THE FLAG IS FOOBAR.'
+input_str = 'THIS IS VE3IRR. THE FLAG IS FOOBAR. '
 
 
 class BitWriter(BufferedIOBase):
