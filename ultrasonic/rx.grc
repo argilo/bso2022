@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 12.0]
+    coordinate: [624, 12.0]
     rotation: 0
     state: true
 - name: freq
@@ -54,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 12.0]
+    coordinate: [424, 12.0]
     rotation: 0
     state: true
 - name: lp_taps
@@ -83,7 +83,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12.0]
+    coordinate: [328, 12.0]
     rotation: 0
     state: enabled
 - name: sps
@@ -95,7 +95,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 12.0]
+    coordinate: [720, 12.0]
     rotation: 0
     state: true
 - name: sync_word
@@ -107,7 +107,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 12.0]
+    coordinate: [512, 12.0]
     rotation: 0
     state: true
 - name: analog_quadrature_demod_cf_0
@@ -260,6 +260,19 @@ blocks:
     coordinate: [416, 244.0]
     rotation: 0
     state: true
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import math
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [176, 12.0]
+    rotation: 0
+    state: true
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -347,8 +360,8 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '2'
-    ymin: '-2'
+    ymax: math.pi
+    ymin: -math.pi
     yunit: '""'
   states:
     bus_sink: false
