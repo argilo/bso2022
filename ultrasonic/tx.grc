@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 12.0]
+    coordinate: [416, 12.0]
     rotation: 0
     state: enabled
 - name: interpolation
@@ -54,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 12.0]
+    coordinate: [496, 12.0]
     rotation: 0
     state: true
 - name: left_on
@@ -121,7 +121,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 12.0]
+    coordinate: [320, 12.0]
     rotation: 0
     state: enabled
 - name: secret_message
@@ -133,7 +133,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [648, 12.0]
+    coordinate: [832, 12.0]
     rotation: 0
     state: true
 - name: sps
@@ -145,7 +145,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [952, 12.0]
+    coordinate: [600, 12.0]
     rotation: 0
     state: true
 - name: sync_word
@@ -157,7 +157,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 12.0]
+    coordinate: [672, 12.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -245,7 +245,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [256, 148.0]
+    coordinate: [256, 188.0]
     rotation: 0
     state: enabled
 - name: blocks_rotator_cc_0
@@ -256,7 +256,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    phase_inc: 2 * math.pi * freq / samp_rate
+    phase_inc: freq * (2 * math.pi / samp_rate)
     tag_inc_update: 'False'
   states:
     bus_sink: false
@@ -282,7 +282,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 140.0]
+    coordinate: [24, 180.0]
     rotation: 0
     state: true
 - name: digital_gfsk_mod_0
@@ -303,7 +303,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 132.0]
+    coordinate: [464, 172.0]
     rotation: 0
     state: true
 - name: import_0
@@ -336,7 +336,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 132.0]
+    coordinate: [672, 172.0]
     rotation: 0
     state: true
 
