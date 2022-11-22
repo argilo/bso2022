@@ -171,7 +171,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     tagname: start
-    threshold: '2'
+    threshold: '4'
     type: byte
   states:
     bus_sink: false
