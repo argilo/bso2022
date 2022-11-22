@@ -45,6 +45,18 @@ blocks:
     coordinate: [432, 12.0]
     rotation: 0
     state: enabled
+- name: interpolation
+  id: variable
+  parameters:
+    comment: ''
+    value: '64'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 12.0]
+    rotation: 0
+    state: true
 - name: left_on
   id: variable_qtgui_check_box
   parameters:
@@ -70,9 +82,7 @@ blocks:
     label: Output level
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: float
-    showports: 'False'
     start: '0'
     step: '0.01'
     stop: '1'
@@ -124,6 +134,18 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [648, 12.0]
+    rotation: 0
+    state: true
+- name: sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '8'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [952, 12.0]
     rotation: 0
     state: true
 - name: sync_word
@@ -274,7 +296,7 @@ blocks:
     log: 'False'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samples_per_symbol: '8'
+    samples_per_symbol: sps
     sensitivity: '1.0'
     verbose: 'False'
   states:
@@ -305,7 +327,7 @@ blocks:
     comment: ''
     decim: '1'
     fbw: '0'
-    interp: '64'
+    interp: interpolation
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: '[]'
@@ -331,4 +353,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
