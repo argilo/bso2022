@@ -276,7 +276,7 @@ blocks:
     repeat: 'True'
     tags: '[]'
     type: byte
-    vector: ([0b01010101] * 4) + sync_word + [ord(c) for c in secret_message]
+    vector: ([0b01010101] * 4) + sync_word + [ord(c) for c in secret_message + "\n"]
     vlen: '1'
   states:
     bus_sink: false

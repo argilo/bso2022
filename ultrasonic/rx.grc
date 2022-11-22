@@ -222,8 +222,9 @@ blocks:
       \            if i in rel_offsets:\n            \tself.reset()\n\n          \
       \  self.current_byte = (self.current_byte << 1) | bit\n            self.current_bits\
       \ += 1\n\n            if self.current_bits == 8:\n                c = chr(self.current_byte)\n\
-      \                if c.isprintable():\n                    print(c, end=\"\"\
-      , flush=True)\n                self.reset()\n            \n        return len(input_items[0])\n"
+      \                if c.isprintable() or c == \"\\n\":\n                    print(c,\
+      \ end=\"\", flush=True)\n                self.reset()\n            \n      \
+      \  return len(input_items[0])\n"
     affinity: ''
     alias: ''
     comment: ''
