@@ -290,7 +290,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    bt: '1.0'
+    bt: '2.0'
     comment: ''
     do_unpack: 'False'
     log: 'False'
