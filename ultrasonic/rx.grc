@@ -33,6 +33,18 @@ options:
     state: enabled
 
 blocks:
+- name: decimation
+  id: variable
+  parameters:
+    comment: ''
+    value: '64'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 12.0]
+    rotation: 0
+    state: true
 - name: freq
   id: variable
   parameters:
@@ -50,11 +62,10 @@ blocks:
   parameters:
     beta: '6.76'
     comment: ''
-    cutoff_freq: '300'
+    cutoff_freq: (samp_rate // decimation) * 0.4
     gain: '1.0'
     samp_rate: samp_rate
-    value: ''
-    width: '150'
+    width: (samp_rate // decimation) * 0.2
     win: window.WIN_HAMMING
   states:
     bus_sink: false
@@ -75,6 +86,18 @@ blocks:
     coordinate: [184, 12.0]
     rotation: 0
     state: enabled
+- name: sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '8'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 12.0]
+    rotation: 0
+    state: true
 - name: sync_word
   id: variable
   parameters:
@@ -170,7 +193,7 @@ blocks:
     minoutbuf: '0'
     mu: '0.5'
     omega_relative_limit: '0.005'
-    samples_per_symbol: '8'
+    samples_per_symbol: sps
     sensitivity: '1.0'
     verbose: 'False'
   states:
@@ -223,7 +246,7 @@ blocks:
     alias: ''
     center_freq: freq
     comment: ''
-    decim: '64'
+    decim: decimation
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: samp_rate
@@ -292,7 +315,7 @@ blocks:
     name: '""'
     nconnections: '1'
     size: '1024'
-    srate: samp_rate
+    srate: samp_rate // decimation
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -443,4 +466,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
