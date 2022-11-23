@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: no_gui
     hier_block_src_path: '.:'
-    id: sig2
+    id: sig3
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -45,24 +45,22 @@ blocks:
     coordinate: [344, 12.0]
     rotation: 0
     state: true
-- name: analog_nbfm_tx_0
-  id: analog_nbfm_tx
+- name: blocks_add_const_vxx_0
+  id: blocks_add_const_vxx
   parameters:
     affinity: ''
     alias: ''
-    audio_rate: audio_rate
     comment: ''
-    fh: '-1.0'
-    max_dev: 5e3
+    const: '0.5'
     maxoutbuf: '0'
     minoutbuf: '0'
-    quad_rate: audio_rate * 2
-    tau: 75e-6
+    type: complex
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 156.0]
+    coordinate: [872, 188.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0
@@ -82,6 +80,22 @@ blocks:
     bus_structure: null
     coordinate: [336, 332.0]
     rotation: 180
+    state: enabled
+- name: blocks_float_to_complex_0
+  id: blocks_float_to_complex
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 176.0]
+    rotation: 0
     state: enabled
 - name: blocks_rotator_cc_0
   id: blocks_rotator_cc
@@ -106,7 +120,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    file: flag2.wav
+    file: flag3.wav
     maxoutbuf: '0'
     minoutbuf: '0'
     nchan: '1'
@@ -115,7 +129,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 180.0]
+    coordinate: [48, 164.0]
     rotation: 0
     state: enabled
 - name: import_0
@@ -131,28 +145,28 @@ blocks:
     coordinate: [200, 12.0]
     rotation: 0
     state: true
-- name: low_pass_filter_0_0
+- name: low_pass_filter_1
   id: low_pass_filter
   parameters:
     affinity: ''
     alias: ''
     beta: '6.76'
     comment: ''
-    cutoff_freq: '12500'
+    cutoff_freq: '5000'
     decim: '1'
-    gain: '0.95'
+    gain: '0.5'
     interp: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: audio_rate
-    type: fir_filter_ccf
-    width: '5000'
+    type: interp_fir_filter_ccf
+    width: '400'
     win: window.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 140.0]
+    coordinate: [664, 140.0]
     rotation: 0
     state: enabled
 - name: offset
@@ -180,7 +194,7 @@ blocks:
     comment: ''
     decim: '1'
     fbw: '0'
-    interp: samp_rate // (audio_rate * 2)
+    interp: samp_rate // audio_rate
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: ''
@@ -209,7 +223,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 164.0]
+    coordinate: [248, 148.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -231,12 +245,13 @@ blocks:
     state: true
 
 connections:
-- [analog_nbfm_tx_0, '0', low_pass_filter_0_0, '0']
+- [blocks_add_const_vxx_0, '0', rational_resampler_xxx_1, '0']
+- [blocks_float_to_complex_0, '0', low_pass_filter_1, '0']
 - [blocks_rotator_cc_0, '0', blocks_file_sink_0, '0']
 - [blocks_wavfile_source_1, '0', rational_resampler_xxx_3, '0']
-- [low_pass_filter_0_0, '0', rational_resampler_xxx_1, '0']
+- [low_pass_filter_1, '0', blocks_add_const_vxx_0, '0']
 - [rational_resampler_xxx_1, '0', blocks_rotator_cc_0, '0']
-- [rational_resampler_xxx_3, '0', analog_nbfm_tx_0, '0']
+- [rational_resampler_xxx_3, '0', blocks_float_to_complex_0, '0']
 
 metadata:
   file_format: 1
