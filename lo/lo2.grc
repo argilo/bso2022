@@ -82,7 +82,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 628.0]
+    coordinate: [680, 644.0]
     rotation: 0
     state: true
 - name: analog_noise_source_x_0
@@ -120,7 +120,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [104, 588.0]
+    coordinate: [104, 604.0]
     rotation: 180
     state: true
 - name: blocks_add_const_vxx_0
@@ -156,7 +156,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [216, 516.0]
+    coordinate: [216, 532.0]
     rotation: 0
     state: true
 - name: blocks_add_xx_0
@@ -228,7 +228,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1160, 520.0]
+    coordinate: [1160, 536.0]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_2
@@ -264,7 +264,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 504.0]
+    coordinate: [88, 520.0]
     rotation: 0
     state: true
 - name: blocks_vco_c_0
@@ -282,7 +282,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 500.0]
+    coordinate: [960, 516.0]
     rotation: 0
     state: true
 - name: blocks_vco_c_0_0
@@ -323,24 +323,6 @@ blocks:
     coordinate: [112, 364.0]
     rotation: 180
     state: true
-- name: blocks_wavfile_source_0
-  id: blocks_wavfile_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    file: music.wav
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    nchan: '1'
-    repeat: 'True'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [320, 364.0]
-    rotation: 0
-    state: true
 - name: blocks_wavfile_source_0_0
   id: blocks_wavfile_source
   parameters:
@@ -356,8 +338,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 652.0]
+    coordinate: [280, 668.0]
     rotation: 0
+    state: true
+- name: blocks_wavfile_source_0_0_0
+  id: blocks_wavfile_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    file: decoy.wav
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    repeat: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 444.0]
+    rotation: 180
     state: true
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
@@ -396,7 +396,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 492.0]
+    coordinate: [576, 508.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0_0_0
@@ -436,7 +436,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 492.0]
+    coordinate: [384, 508.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_1
@@ -456,7 +456,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 492.0]
+    coordinate: [768, 508.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_1_0
@@ -516,7 +516,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 636.0]
+    coordinate: [944, 652.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_3
@@ -536,7 +536,27 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [472, 636.0]
+    coordinate: [472, 652.0]
+    rotation: 0
+    state: true
+- name: rational_resampler_xxx_3_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '22050'
+    fbw: '0'
+    interp: '48000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 348.0]
     rotation: 0
     state: true
 
@@ -556,8 +576,8 @@ connections:
 - [blocks_vco_c_0_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_vector_source_x_0, '0', blocks_multiply_xx_2, '1']
 - [blocks_vector_source_x_0, '0', blocks_multiply_xx_3, '0']
-- [blocks_wavfile_source_0, '0', analog_nbfm_tx_0, '0']
 - [blocks_wavfile_source_0_0, '0', rational_resampler_xxx_3, '0']
+- [blocks_wavfile_source_0_0_0, '0', rational_resampler_xxx_3_0, '0']
 - [rational_resampler_xxx_0, '0', rational_resampler_xxx_0_0_0, '0']
 - [rational_resampler_xxx_0_0, '0', rational_resampler_xxx_1, '0']
 - [rational_resampler_xxx_0_0_0, '0', rational_resampler_xxx_1_0, '0']
@@ -567,6 +587,7 @@ connections:
 - [rational_resampler_xxx_2, '0', blocks_multiply_xx_0, '1']
 - [rational_resampler_xxx_2_0, '0', blocks_multiply_xx_1, '1']
 - [rational_resampler_xxx_3, '0', analog_nbfm_tx_0_0, '0']
+- [rational_resampler_xxx_3_0, '0', analog_nbfm_tx_0, '0']
 
 metadata:
   file_format: 1
