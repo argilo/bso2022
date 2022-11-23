@@ -191,7 +191,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 324.0]
+    coordinate: [96, 380.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -274,6 +274,26 @@ blocks:
     coordinate: [792, 308.0]
     rotation: 0
     state: true
+- name: rational_resampler_xxx_3
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '22050'
+    fbw: '0'
+    interp: '48000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 308.0]
+    rotation: 0
+    state: true
 
 connections:
 - [analog_nbfm_tx_0, '0', rational_resampler_xxx_2, '0']
@@ -282,11 +302,12 @@ connections:
 - [blocks_multiply_xx_1, '0', rational_resampler_xxx_0, '0']
 - [blocks_vco_c_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_vector_source_x_0, '0', blocks_multiply_xx_1, '1']
-- [blocks_wavfile_source_0, '0', analog_nbfm_tx_0, '0']
+- [blocks_wavfile_source_0, '0', rational_resampler_xxx_3, '0']
 - [rational_resampler_xxx_0, '0', rational_resampler_xxx_0_0, '0']
 - [rational_resampler_xxx_0_0, '0', rational_resampler_xxx_1, '0']
 - [rational_resampler_xxx_1, '0', blocks_vco_c_0, '0']
 - [rational_resampler_xxx_2, '0', blocks_multiply_xx_0, '1']
+- [rational_resampler_xxx_3, '0', analog_nbfm_tx_0, '0']
 
 metadata:
   file_format: 1
