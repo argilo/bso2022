@@ -33,11 +33,23 @@ options:
     state: enabled
 
 blocks:
+- name: audio_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 12.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '1000000'
+    value: audio_rate * 20
   states:
     bus_sink: false
     bus_source: false
@@ -62,7 +74,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [520, 340.0]
+    coordinate: [320, 340.0]
     rotation: 0
     state: true
 - name: analog_nbfm_tx_0_0
@@ -82,7 +94,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 644.0]
+    coordinate: [456, 708.0]
     rotation: 0
     state: true
 - name: analog_noise_source_x_0
@@ -101,8 +113,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [176, 140.0]
-    rotation: 180
+    coordinate: [64, 220.0]
+    rotation: 0
     state: true
 - name: analog_noise_source_x_0_0
   id: analog_noise_source_x
@@ -120,43 +132,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [104, 604.0]
-    rotation: 180
-    state: true
-- name: blocks_add_const_vxx_0
-  id: blocks_add_const_vxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: '0.1'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [200, 244.0]
-    rotation: 0
-    state: true
-- name: blocks_add_const_vxx_1
-  id: blocks_add_const_vxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: '-0.1'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [216, 532.0]
+    coordinate: [160, 580.0]
     rotation: 0
     state: true
 - name: blocks_add_xx_0
@@ -228,43 +204,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1160, 536.0]
-    rotation: 0
-    state: true
-- name: blocks_multiply_xx_2
-  id: blocks_multiply_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [64, 232.0]
-    rotation: 0
-    state: true
-- name: blocks_multiply_xx_3
-  id: blocks_multiply_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [88, 520.0]
+    coordinate: [1160, 600.0]
     rotation: 0
     state: true
 - name: blocks_vco_c_0
@@ -282,7 +222,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 516.0]
+    coordinate: [960, 580.0]
     rotation: 0
     state: true
 - name: blocks_vco_c_0_0
@@ -300,28 +240,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [952, 228.0]
+    coordinate: [864, 220.0]
     rotation: 0
-    state: true
-- name: blocks_vector_source_x_0
-  id: blocks_vector_source_x
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    repeat: 'True'
-    tags: '[]'
-    type: float
-    vector: '[0]*40 + [n/80 for n in range(80)]'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [112, 364.0]
-    rotation: 180
     state: true
 - name: blocks_wavfile_source_0_0
   id: blocks_wavfile_source
@@ -338,7 +258,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 668.0]
+    coordinate: [48, 804.0]
     rotation: 0
     state: true
 - name: blocks_wavfile_source_0_0_0
@@ -356,8 +276,56 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 444.0]
+    coordinate: [536, 476.0]
     rotation: 180
+    state: true
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: audio_rate // 2
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: audio_rate * 2
+    type: fir_filter_ccf
+    width: audio_rate // 4
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [736, 692.0]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: audio_rate // 2
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: audio_rate * 2
+    type: fir_filter_ccf
+    width: audio_rate // 4
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [592, 324.0]
+    rotation: 0
     state: true
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
@@ -376,7 +344,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [360, 220.0]
+    coordinate: [272, 212.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0_0
@@ -396,7 +364,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 508.0]
+    coordinate: [576, 572.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0_0_0
@@ -416,7 +384,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 220.0]
+    coordinate: [464, 212.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0_1
@@ -436,7 +404,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 508.0]
+    coordinate: [384, 572.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_1
@@ -456,7 +424,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 508.0]
+    coordinate: [768, 572.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_1_0
@@ -476,7 +444,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 220.0]
+    coordinate: [664, 212.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_2
@@ -516,7 +484,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 652.0]
+    coordinate: [944, 716.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_3
@@ -536,7 +504,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [472, 652.0]
+    coordinate: [232, 788.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_3_0
@@ -556,28 +524,24 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 348.0]
-    rotation: 0
+    coordinate: [336, 460.0]
+    rotation: 180
     state: true
 
 connections:
-- [analog_nbfm_tx_0, '0', rational_resampler_xxx_2, '0']
-- [analog_nbfm_tx_0_0, '0', rational_resampler_xxx_2_0, '0']
-- [analog_noise_source_x_0, '0', blocks_multiply_xx_2, '0']
-- [analog_noise_source_x_0_0, '0', blocks_multiply_xx_3, '1']
-- [blocks_add_const_vxx_0, '0', rational_resampler_xxx_0, '0']
-- [blocks_add_const_vxx_1, '0', rational_resampler_xxx_0_1, '0']
+- [analog_nbfm_tx_0, '0', low_pass_filter_0_0, '0']
+- [analog_nbfm_tx_0_0, '0', low_pass_filter_0, '0']
+- [analog_noise_source_x_0, '0', rational_resampler_xxx_0, '0']
+- [analog_noise_source_x_0_0, '0', rational_resampler_xxx_0_1, '0']
 - [blocks_add_xx_0, '0', blocks_file_sink_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_add_xx_0, '0']
 - [blocks_multiply_xx_1, '0', blocks_add_xx_0, '1']
-- [blocks_multiply_xx_2, '0', blocks_add_const_vxx_0, '0']
-- [blocks_multiply_xx_3, '0', blocks_add_const_vxx_1, '0']
 - [blocks_vco_c_0, '0', blocks_multiply_xx_1, '0']
 - [blocks_vco_c_0_0, '0', blocks_multiply_xx_0, '0']
-- [blocks_vector_source_x_0, '0', blocks_multiply_xx_2, '1']
-- [blocks_vector_source_x_0, '0', blocks_multiply_xx_3, '0']
 - [blocks_wavfile_source_0_0, '0', rational_resampler_xxx_3, '0']
 - [blocks_wavfile_source_0_0_0, '0', rational_resampler_xxx_3_0, '0']
+- [low_pass_filter_0, '0', rational_resampler_xxx_2_0, '0']
+- [low_pass_filter_0_0, '0', rational_resampler_xxx_2, '0']
 - [rational_resampler_xxx_0, '0', rational_resampler_xxx_0_0_0, '0']
 - [rational_resampler_xxx_0_0, '0', rational_resampler_xxx_1, '0']
 - [rational_resampler_xxx_0_0_0, '0', rational_resampler_xxx_1_0, '0']
