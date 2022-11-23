@@ -20,5 +20,5 @@ python3 paint_flag.py
 
 sox flag8.wav -r 8000 -t raw - | ~/git/m17-cxx-demod/build/apps/m17-mod -S VE3IRR -b > flag8.bin
 
-grcc multi_tx.grc
+PYTHONPATH=.:$PYTHONPATH grcc multi_tx.grc
 python3 multi_tx.py
