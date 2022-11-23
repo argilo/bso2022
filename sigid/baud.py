@@ -3,7 +3,7 @@
 from io import BufferedIOBase
 from baudot import encode_str, codecs, handlers
 
-input_str = 'THIS IS VE3IRR. FOR SIGNAL IDENTIFICATION CHALLENGE 7 THE FLAG IS IOHCPYQXWUTDQPMF. '
+input_str = '   THIS IS VE3IRR. FOR PART 7 THE FLAG IS IOHCPYQXWUTDQPMF.   '
 
 
 class BitWriter(BufferedIOBase):
@@ -32,4 +32,5 @@ class BitWriter(BufferedIOBase):
 out = BitWriter()
 writer = handlers.HexBytesWriter(out)
 encode_str(input_str, codecs.ITA2_STANDARD, writer)
-print(out.getvalue())
+with open("flag7.bin", "wb") as f:
+    f.write(bytes(out.getvalue()))
