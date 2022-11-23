@@ -11,7 +11,6 @@ __pycache__
 /sigid/flag*.png
 /sigid/flag*.wav
 /sigid/flag*.bin
-/sigid/multi_tx.py
 /sigid/sig.c32
 /sigid/sig*.py
 /ultrasonic/rx.py
