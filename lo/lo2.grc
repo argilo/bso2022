@@ -464,7 +464,7 @@ blocks:
     comment: ''
     decim: '1'
     fbw: '0'
-    interp: '40'
+    interp: samp_rate // audio_rate
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: ''
@@ -484,7 +484,7 @@ blocks:
     comment: ''
     decim: '1'
     fbw: '0'
-    interp: '40'
+    interp: samp_rate // audio_rate
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: ''
