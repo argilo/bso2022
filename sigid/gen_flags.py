@@ -54,6 +54,8 @@ def tts_wav(text, file, voice):
     ])
 
 
+random.seed("sigid")
+
 for part in (2, 3, 4, 5, 8):
     flag = gen_flag()
     phonetic = to_phonetic(flag)

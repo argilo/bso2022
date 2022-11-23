@@ -54,6 +54,8 @@ def tts_wav(text, file, voice):
     ])
 
 
+random.seed("lo")
+
 for part in (1, 2):
     flag = gen_flag()
     phonetic = to_phonetic(flag)
@@ -67,9 +69,9 @@ for part in (1, 2):
 
 text = f"""
     This is V E 3 I R R.
-    <break time="1500ms"/>
+    <break time="1000ms"/>
     The following is an interesting URL:
-    <break time="2000ms"/>
+    <break time="1400ms"/>
     h t t p s colon slash slash t dot c o slash e l o n
 """
 tts_wav(text, "decoy.wav", "en-us+f2")
