@@ -47,5 +47,5 @@ python3 sig7.py --samp-rate=${SAMP_RATE} --offset=-50000
 
 # RTTY
 grcc sig8.grc
-sox flag8.wav -r 8000 -t raw - | ~/git/m17-cxx-demod/build/apps/m17-mod -S VE3IRR -b > flag8.bin
+cat <(dd if=/dev/zero bs=16000 count=3) <(sox flag8.wav -r 8000 -t raw -) | ~/git/m17-cxx-demod/build/apps/m17-mod -S VE3IRR -b > flag8.bin
 python3 sig8.py --samp-rate=${SAMP_RATE} --offset=-350000
