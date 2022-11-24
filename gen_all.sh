@@ -17,4 +17,4 @@ cd ..
 grcc combine.grc
 python3 combine.py
 
-grcc ursp_tx.grc
+grcc usrp_tx.grc
