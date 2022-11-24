@@ -1,4 +1,7 @@
 __pycache__
+/combine.py
+/final.c32
+/usrp_tx.py
 /demod/ask.py
 /demod/fsk.py
 /demod/psk.py
