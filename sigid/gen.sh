@@ -2,7 +2,7 @@
 
 set -e
 
-SAMP_RATE=5760000
+SAMP_RATE=7680000
 
 python3 gen_flags.py
 

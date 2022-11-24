@@ -2,7 +2,7 @@
 
 set -e
 
-SAMP_RATE=5760000
+SAMP_RATE=7680000
 
 grcc ask.grc
 python3 ask.py --samp-rate=${SAMP_RATE} --offset=500000
