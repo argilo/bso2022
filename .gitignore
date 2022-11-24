@@ -1,4 +1,8 @@
 __pycache__
+/demod/ask.py
+/demod/fsk.py
+/demod/psk.py
+/demod/demod.c32
 /lo/decoy.wav
 /lo/flag1.wav
 /lo/flag2.wav
