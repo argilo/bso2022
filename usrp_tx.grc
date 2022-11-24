@@ -53,9 +53,7 @@ blocks:
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: float
-    showports: 'False'
     start: '0'
     step: '1'
     stop: '90'
@@ -213,7 +211,7 @@ blocks:
     clock_source6: ''
     clock_source7: ''
     comment: ''
-    dev_addr: '""'
+    dev_addr: '"send_frame_size=8192,num_send_frames=256"'
     dev_args: ''
     gain0: gain
     gain1: '0'
@@ -376,7 +374,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [520, 196.0]
+    coordinate: [520, 188.0]
     rotation: 0
     state: true
 
@@ -385,4 +383,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
