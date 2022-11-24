@@ -280,7 +280,7 @@ blocks:
     alpha: '10.0'
     comment: ''
     decim: '1'
-    gain: '1'
+    gain: '0.9'
     interp: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
