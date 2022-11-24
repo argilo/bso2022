@@ -45,18 +45,6 @@ blocks:
     coordinate: [304, 12.0]
     rotation: 0
     state: true
-- name: samp_rate
-  id: variable
-  parameters:
-    comment: ''
-    value: audio_rate * 40
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [208, 12.0]
-    rotation: 0
-    state: enabled
 - name: analog_nbfm_tx_0
   id: analog_nbfm_tx
   parameters:
@@ -141,7 +129,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '500000'
+    const: offset
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -159,7 +147,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '500000'
+    const: offset
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -376,6 +364,23 @@ blocks:
     coordinate: [592, 324.0]
     rotation: 0
     state: true
+- name: offset
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: eng_float
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [672, 12.0]
+    rotation: 0
+    state: true
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
   parameters:
@@ -575,6 +580,23 @@ blocks:
     bus_structure: null
     coordinate: [336, 460.0]
     rotation: 180
+    state: true
+- name: samp_rate
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: intx
+    value: '960000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 12.0]
+    rotation: 0
     state: true
 
 connections:
