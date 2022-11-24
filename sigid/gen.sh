@@ -37,7 +37,7 @@ grcc sig5.grc
 python3 sig5.py --samp-rate=${SAMP_RATE} --offset=-250000
 
 # CW
-grcc sig6.grc
+PYTHONPATH=.:${PYTHONPATH} grcc sig6.grc
 python3 sig6.py --samp-rate=${SAMP_RATE} --offset=350000
 
 # RTTY
