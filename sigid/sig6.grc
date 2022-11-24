@@ -122,7 +122,7 @@ blocks:
     tags: '[]'
     type: complex
     vector: (0,)*5 + morse_table.morse_seq("This is VE3IRR   -   For part 6 the flag
-      is itelilelcsemzpcc") + (0,)*5
+      is electromagnetism") + (0,)*5
     vlen: '1'
   states:
     bus_sink: false

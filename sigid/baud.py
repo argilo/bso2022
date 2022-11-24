@@ -3,7 +3,7 @@
 from io import BufferedIOBase
 from baudot import encode_str, codecs, handlers
 
-input_str = '   THIS IS VE3IRR. FOR PART 7 THE FLAG IS IOHCPYQXWUTDQPMF.   '
+input_str = '     THIS IS VE3IRR. PART 7: FLAG(WH0-N33DS-M0RE-TH4N-F1VE-B1TS)   '
 
 
 class BitWriter(BufferedIOBase):
