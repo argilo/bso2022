@@ -15,7 +15,7 @@ void setup() {
   radio.initialize();
   radio.transmitBegin();
   radio.setFrequencyMHz(905.79);
-  radio.setPowerLevel(16);
+  radio.setPowerLevel(20);
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
