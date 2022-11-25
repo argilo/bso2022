@@ -20,6 +20,7 @@ __pycache__
 /sigid/flag*.bin
 /sigid/sig.c32
 /sigid/sig*.py
+/ultrasonic/malware.py
 /ultrasonic/rx.py
 /ultrasonic/rx_epy_block_0.py
 /ultrasonic/tx.py
