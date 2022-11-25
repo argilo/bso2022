@@ -81,25 +81,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 132.0]
-    rotation: 180
-    state: true
-- name: blocks_add_const_vxx_0
-  id: blocks_add_const_vxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: offset
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [224, 228.0]
+    coordinate: [48, 140.0]
     rotation: 0
     state: true
 - name: blocks_file_sink_0
@@ -117,8 +99,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1168, 308.0]
-    rotation: 0
+    coordinate: [792, 460.0]
+    rotation: 180
     state: enabled
 - name: blocks_multiply_xx_0
   id: blocks_multiply_xx
@@ -153,8 +135,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [96, 216.0]
+    coordinate: [256, 216.0]
     rotation: 0
+    state: true
+- name: blocks_rotator_cc_0
+  id: blocks_rotator_cc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    phase_inc: offset * (2 * math.pi / samp_rate)
+    tag_inc_update: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1008, 464.0]
+    rotation: 180
     state: true
 - name: blocks_vco_c_0
   id: blocks_vco_c
@@ -191,8 +190,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 292.0]
-    rotation: 180
+    coordinate: [32, 284.0]
+    rotation: 0
     state: true
 - name: blocks_wavfile_source_0
   id: blocks_wavfile_source
@@ -387,9 +386,9 @@ blocks:
 connections:
 - [analog_nbfm_tx_0, '0', low_pass_filter_0, '0']
 - [analog_noise_source_x_0, '0', blocks_multiply_xx_1, '0']
-- [blocks_add_const_vxx_0, '0', rational_resampler_xxx_0, '0']
-- [blocks_multiply_xx_0, '0', blocks_file_sink_0, '0']
-- [blocks_multiply_xx_1, '0', blocks_add_const_vxx_0, '0']
+- [blocks_multiply_xx_0, '0', blocks_rotator_cc_0, '0']
+- [blocks_multiply_xx_1, '0', rational_resampler_xxx_0, '0']
+- [blocks_rotator_cc_0, '0', blocks_file_sink_0, '0']
 - [blocks_vco_c_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_vector_source_x_0, '0', blocks_multiply_xx_1, '1']
 - [blocks_wavfile_source_0, '0', rational_resampler_xxx_3, '0']
