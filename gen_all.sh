@@ -14,6 +14,8 @@ cd sigid
 ./gen.sh
 cd ..
 
+python3 resize.py
+
 grcc combine.grc
 python3 combine.py
 
