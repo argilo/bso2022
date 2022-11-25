@@ -9,17 +9,17 @@ and to keep afterwards.
 
 Below are some software packages that you might find useful.
 Many of them are available through the package manager in Ubuntu or Kali.
-* [Gqrx SDR (Linux / MacOS)](https://gqrx.dk/) - a software-defined radio receiver
+* [Gqrx SDR (Linux / MacOS)](https://github.com/gqrx-sdr/gqrx) - a software-defined radio receiver
 * [SDR Sharp (Windows)](https://airspy.com/download/) - a software-defined radio receiver
 * [GNU Radio](https://www.gnuradio.org/) - a software radio development toolkit
 * [Universal Radio Hacker](https://github.com/jopohl/urh) - a complete suite for wireless protocol investigation
 * [SigDigger](https://batchdrake.github.io/SigDigger/) - a free digital signal analyzer
 * [Inspectrum](https://github.com/miek/inspectrum) - a tool for analyzing captured signals
-* [Baudline](https://www.baudline.com/) - a time-frequency browser
 
 Some useful learning resources:
 * [Signal Identification Guide](https://www.sigidwiki.com/)
 * [Software Defined Radio with HackRF tutorial](https://greatscottgadgets.com/sdr/)
+* [PySDR: A Guide to SDR and DSP using Python](https://pysdr.org/)
 * [RTL-SDR.COM](https://www.rtl-sdr.com/)
 
 If you need any help getting started, drop by the organizers' table and Clayton
