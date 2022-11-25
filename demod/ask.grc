@@ -61,7 +61,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '"Hello world! flag{foo bar baz}"'
+    value: '"Well hello there! This is Demod 101 part 1. flag{0n_ofF_k3y1nG}"'
   states:
     bus_sink: false
     bus_source: false
