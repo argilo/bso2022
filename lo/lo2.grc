@@ -217,7 +217,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amplitude: 0.95 * (1 / 11)
+    amplitude: 0.95 * (1 / 4)
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -235,7 +235,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amplitude: 0.95 * (10 / 11)
+    amplitude: 0.95 * (3 / 4)
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
