@@ -6,6 +6,8 @@ __pycache__
 /demod/fsk.py
 /demod/psk.py
 /demod/demod.c32
+/demod/solution*.py
+/demod/gqrx_*
 /lo/decoy.wav
 /lo/flag1.wav
 /lo/flag2.wav

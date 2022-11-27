@@ -1,0 +1,448 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: solution
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 12.0]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: decim
+  id: variable
+  parameters:
+    comment: ''
+    value: '160'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 12.0]
+    rotation: 0
+    state: true
+- name: lp_taps
+  id: variable_low_pass_filter_taps
+  parameters:
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '5000'
+    gain: '20.0'
+    samp_rate: samp_rate
+    value: ''
+    width: '2000'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [496, 36.0]
+    rotation: 0
+    state: true
+- name: psk_const
+  id: variable_constellation
+  parameters:
+    comment: ''
+    const_points: '[-1-1j, -1+1j, 1+1j, 1-1j]'
+    dims: '1'
+    normalization: digital.constellation.AMPLITUDE_NORMALIZATION
+    precision: '8'
+    rot_sym: '4'
+    soft_dec_lut: None
+    sym_map: '[0, 1, 3, 2]'
+    type: bpsk
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 812.0]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '1920000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 12.0]
+    rotation: 0
+    state: enabled
+- name: sync_word
+  id: variable
+  parameters:
+    comment: ''
+    value: '[0xd3, 0x91]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [376, 12.0]
+    rotation: 0
+    state: true
+- name: analog_const_source_x_0
+  id: analog_const_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 804.0]
+    rotation: 0
+    state: enabled
+- name: analog_pwr_squelch_xx_0
+  id: analog_pwr_squelch_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: 1e-2
+    comment: ''
+    gate: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    ramp: '0'
+    threshold: '-30'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [496, 540.0]
+    rotation: 180
+    state: true
+- name: blocks_file_source_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: gqrx_20221125_191617_441200000_1920000_fc.c32
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [144, 188.0]
+    rotation: 0
+    state: true
+- name: blocks_xor_xx_0
+  id: blocks_xor_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 776.0]
+    rotation: 0
+    state: enabled
+- name: digital_constellation_receiver_cb_0
+  id: digital_constellation_receiver_cb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: psk_const
+    fmax: '0.1'
+    fmin: '-0.1'
+    loop_bw: 2 * 3.14 / 100
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    showports: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 640.0]
+    rotation: 0
+    state: true
+- name: digital_correlate_access_code_tag_xx_1
+  id: digital_correlate_access_code_tag_xx
+  parameters:
+    access_code: '"0101010101010101" + "".join(f"{b:08b}" for b in sync_word)'
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tagname: start
+    threshold: '4'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 772.0]
+    rotation: 0
+    state: enabled
+- name: digital_correlate_access_code_tag_xx_1_0
+  id: digital_correlate_access_code_tag_xx
+  parameters:
+    access_code: '"0101010101010101" + "".join(f"{b:08b}" for b in sync_word)'
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tagname: start
+    threshold: '4'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 620.0]
+    rotation: 0
+    state: enabled
+- name: digital_symbol_sync_xx_0
+  id: digital_symbol_sync_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: digital.constellation_bpsk().base()
+    damping: '1.0'
+    loop_bw: '0.045'
+    max_dev: '1.5'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nfilters: '128'
+    osps: '1'
+    pfb_mf_taps: '[]'
+    resamp_type: digital.IR_MMSE_8TAP
+    sps: '10'
+    ted_gain: '1.0'
+    ted_type: digital.TED_MUELLER_AND_MULLER
+    type: cc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [88, 692.0]
+    rotation: 0
+    state: true
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "import pmt\nimport numpy as np\nfrom gnuradio import gr\n\n\nclass\
+      \ blk(gr.sync_block):  # other base classes are basic_block, decim_block, interp_block\n\
+      \    \"\"\"Embedded Python Block example - a simple multiply const\"\"\"\n\n\
+      \    def __init__(self, tag='start'):  # only default arguments here\n     \
+      \   \"\"\"arguments to this function show up as parameters in GRC\"\"\"\n  \
+      \      gr.sync_block.__init__(\n            self,\n            name='Message\
+      \ Printer',   # will show up in GRC\n            in_sig=[np.uint8],\n      \
+      \      out_sig=[]\n        )\n        self.tag_name = tag\n        self.reset()\n\
+      \        self.enabled = False\n\n    def reset(self):\n        self.current_byte\
+      \ = 0\n        self.current_bits = 0\n\n    def work(self, input_items, output_items):\n\
+      \        rel_offsets = set()\n        for tag in self.get_tags_in_window(0,\
+      \ 0, len(input_items[0])):\n            if pmt.to_python(tag.key) == self.tag_name:\n\
+      \                rel_offsets.add(tag.offset - self.nitems_read(0))\n       \
+      \ for i, bit in enumerate(input_items[0]):\n            if i in rel_offsets:\n\
+      \                self.enabled = True\n                self.reset()\n\n     \
+      \       self.current_byte = (self.current_byte << 1) | bit\n            self.current_bits\
+      \ += 1\n\n            if self.current_bits == 8:\n                c = chr(self.current_byte)\n\
+      \                if self.enabled and (c.isprintable() or c == \"\\n\"):\n  \
+      \                  print(c, end=\"\", flush=True)\n                self.reset()\n\
+      \            \n        return len(input_items[0])\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: '"start"'
+  states:
+    _io_cache: ('Message Printer', 'blk', [('tag', "'start'")], [('0', 'byte', 1)],
+      [], 'Embedded Python Block example - a simple multiply const', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1064, 852.0]
+    rotation: 180
+    state: enabled
+- name: epy_block_0_0
+  id: epy_block
+  parameters:
+    _source_code: "import pmt\nimport numpy as np\nfrom gnuradio import gr\n\n\nclass\
+      \ blk(gr.sync_block):  # other base classes are basic_block, decim_block, interp_block\n\
+      \    \"\"\"Embedded Python Block example - a simple multiply const\"\"\"\n\n\
+      \    def __init__(self, tag='start'):  # only default arguments here\n     \
+      \   \"\"\"arguments to this function show up as parameters in GRC\"\"\"\n  \
+      \      gr.sync_block.__init__(\n            self,\n            name='Message\
+      \ Printer',   # will show up in GRC\n            in_sig=[np.uint8],\n      \
+      \      out_sig=[]\n        )\n        self.tag_name = tag\n        self.reset()\n\
+      \        self.enabled = False\n\n    def reset(self):\n        self.current_byte\
+      \ = 0\n        self.current_bits = 0\n\n    def work(self, input_items, output_items):\n\
+      \        rel_offsets = set()\n        for tag in self.get_tags_in_window(0,\
+      \ 0, len(input_items[0])):\n            if pmt.to_python(tag.key) == self.tag_name:\n\
+      \                rel_offsets.add(tag.offset - self.nitems_read(0))\n       \
+      \ for i, bit in enumerate(input_items[0]):\n            if i in rel_offsets:\n\
+      \                self.enabled = True\n                self.reset()\n\n     \
+      \       self.current_byte = (self.current_byte << 1) | bit\n            self.current_bits\
+      \ += 1\n\n            if self.current_bits == 8:\n                c = chr(self.current_byte)\n\
+      \                if self.enabled and (c.isprintable() or c == \"\\n\"):\n  \
+      \                  print(c, end=\"\", flush=True)\n                self.reset()\n\
+      \            \n        return len(input_items[0])\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: '"start"'
+  states:
+    _io_cache: ('Message Printer', 'blk', [('tag', "'start'")], [('0', 'byte', 1)],
+      [], 'Embedded Python Block example - a simple multiply const', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1064, 700.0]
+    rotation: 180
+    state: enabled
+- name: freq_xlating_fir_filter_xxx_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: '300000'
+    comment: ''
+    decim: decim
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: lp_taps
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [448, 188.0]
+    rotation: 0
+    state: disabled
+- name: freq_xlating_fir_filter_xxx_0_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: '500000'
+    comment: ''
+    decim: decim
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: lp_taps
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [448, 284.0]
+    rotation: 0
+    state: disabled
+- name: freq_xlating_fir_filter_xxx_0_0_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: 100000-1300
+    comment: ''
+    decim: decim
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: lp_taps
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [448, 380.0]
+    rotation: 0
+    state: true
+- name: root_raised_cosine_filter_0
+  id: root_raised_cosine_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '1.0'
+    comment: ''
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    ntaps: 11*10
+    samp_rate: samp_rate // decim
+    sym_rate: '1200'
+    type: fir_filter_ccf
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [136, 524.0]
+    rotation: 180
+    state: true
+
+connections:
+- [analog_const_source_x_0, '0', blocks_xor_xx_0, '1']
+- [analog_pwr_squelch_xx_0, '0', root_raised_cosine_filter_0, '0']
+- [blocks_file_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [blocks_file_source_0, '0', freq_xlating_fir_filter_xxx_0_0, '0']
+- [blocks_file_source_0, '0', freq_xlating_fir_filter_xxx_0_0_0, '0']
+- [blocks_xor_xx_0, '0', digital_correlate_access_code_tag_xx_1, '0']
+- [digital_constellation_receiver_cb_0, '0', blocks_xor_xx_0, '0']
+- [digital_constellation_receiver_cb_0, '0', digital_correlate_access_code_tag_xx_1_0,
+  '0']
+- [digital_correlate_access_code_tag_xx_1, '0', epy_block_0, '0']
+- [digital_correlate_access_code_tag_xx_1_0, '0', epy_block_0_0, '0']
+- [digital_symbol_sync_xx_0, '0', digital_constellation_receiver_cb_0, '0']
+- [freq_xlating_fir_filter_xxx_0_0_0, '0', analog_pwr_squelch_xx_0, '0']
+- [root_raised_cosine_filter_0, '0', digital_symbol_sync_xx_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.4.0
