@@ -14,8 +14,11 @@ with open(sys.argv[1], "rb") as f:
         sample = struct.unpack("f", data)[0]
         if sample > mx:
             mx = sample
+            print(f"New max: {mx}")
         if sample < mn:
             mn = sample
+            print(f"New min: {mx}")
 
+print()
 print(f"Min sample: {mn}")
 print(f"Max sample: {mx}")
